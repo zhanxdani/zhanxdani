@@ -4,7 +4,6 @@
 - 🎯 I’m currently learning Swift, Rust and i want be iOS-developer (SuperSenior)
 - 🍀 I’m looking to collaborate on mobile development and blockchain technology
 - 📫 How to reach me zhantai@email.cz or (for students zhantai.daniiarov@vut.cz)
-- 🌐 My Telegram @zhantvi and IG @...
 
 <!---
 zhanxdani/zhanxdani is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.

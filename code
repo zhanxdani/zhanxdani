@@ -1,11 +1,32 @@
-#include <stdio.h>
+section .text
+global max_div
 
-extern long max_div(long* arr, int count);
+; Вычисление НОД двух чисел (a, b)
+gcd:
+    mov rax, rdi        ; rax = a
+    mov rbx, rsi        ; rbx = b
+gcd_loop:
+    cmp rbx, 0
+    je gcd_end          ; если b == 0, в rax уже лежит НОД
+    xor rdx, rdx        ; очистка rdx перед делением
+    div rbx             ; деление rdx:rax на rbx, результат в rax, остаток в rdx
+    mov rax, rbx
+    mov rbx, rdx
+    jmp gcd_loop
+gcd_end:
+    ret                 ; возвращаем НОД в rax
 
-int main() {
-    long arr[] = {36, 72, 144};
-    int count = sizeof(arr) / sizeof(arr[0]);
-    long result = max_div(arr, count);
-    printf("Maximum common divisor is: %ld\n", result);
-    return 0;
-}
+; Нахождение максимального общего делителя для массива чисел
+; rdi - указатель на массив, rsi - количество элементов в массиве
+max_div:
+    mov rcx, rsi        ; rcx = количество элементов
+    dec rcx             ; первый элемент уже в rax, начинаем со второго
+    mov rax, [rdi]      ; rax = первый элемент массива
+    test rcx, rcx       ; проверяем, есть ли элементы в массиве
+    jz end_max_div      ; если нет, возвращаем rax
+max_div_loop:
+    mov rsi, [rdi + rcx * 8] ; rsi = следующий элемент массива
+    call gcd            ; gcd(rax, rsi), результат в rax
+    loop max_div_loop   ; уменьшаем rcx, переходим к следующему элементу, если rcx != 0
+end_max_div:
+    ret

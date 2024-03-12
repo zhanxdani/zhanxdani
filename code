@@ -13,3 +13,43 @@ int main() {
     }
     return 0;
 }
+
+
+section .text
+global tribonacci
+
+tribonacci:
+    ; Arguments: rdi - num
+    ; rax - current, rbx - next, rcx - temp, rdx - next next, rsi - counter
+    mov rax, 0         ; First Tribonacci number
+    mov rbx, 1         ; Second Tribonacci number
+    mov rdx, 1         ; Third Tribonacci number
+    mov rsi, 3         ; Counter starts from 3 because we already have the first 3 numbers
+
+    cmp rdi, rax       ; Check if num is the first Tribonacci number
+    je .found
+    cmp rdi, rbx       ; Check if num is the second Tribonacci number
+    je .found
+    cmp rdi, rdx       ; Check if num is the third Tribonacci number
+    je .found
+
+.loop:
+    mov rcx, rdx       ; temp = next next
+    add rdx, rbx       ; next next += next
+    add rdx, rax       ; next next += current
+    mov rax, rbx       ; current = next
+    mov rbx, rcx       ; next = temp
+
+    cmp rdi, rdx       ; Check if num is the next next Tribonacci number
+    je .found
+    inc rsi
+    cmp rsi, 100       ; Limit the sequence to prevent infinite loop
+    jne .loop
+
+    ; Not found
+    xor rax, rax       ; Return 0
+    ret
+
+.found:
+    mov rax, 1         ; Return 1
+    ret

@@ -1,47 +1,11 @@
-section .text
-global is_palindrome
+#include <stdio.h>
 
-is_palindrome:
-    ; rdi - адрес строки
-    ; rsi - временно хранит адрес конца строки
-    ; rcx - счетчик для цикла
+extern long max_div(long* arr, int count);
 
-    mov rsi, rdi    ; Копируем начало строки в rsi
-    call strlen     ; Вызываем strlen для определения длины строки
-    mov rcx, rax    ; Длина строки в rcx
-    dec rsi         ; Указатель на последний символ строки
-
-    ; Цикл сравнения символов с начала и конца
-compare_loop:
-    cmp rcx, 0      ; Проверяем, остались ли символы для сравнения
-    jle palindrome  ; Если нет, строка - палиндром
-
-    mov al, [rdi]   ; Загружаем начальный символ
-    mov bl, [rsi]   ; Загружаем конечный символ
-    cmp al, bl      ; Сравниваем символы
-    jne not_palindrome ; Если они не равны, это не палиндром
-
-    ; Переход к следующим символам
-    inc rdi
-    dec rsi
-    sub rcx, 2
-    jmp compare_loop
-
-palindrome:
-    mov rax, 1      ; Возвращаем 1
-    ret
-
-not_palindrome:
-    xor rax, rax    ; Возвращаем 0
-    ret
-
-strlen:
-    ; rdi - адрес строки
-    xor rax, rax    ; Обнуляем rax (счетчик длины строки)
-strlen_loop:
-    cmp byte [rdi+rax], 0
-    je strlen_end
-    inc rax
-    jmp strlen_loop
-strlen_end:
-    ret
+int main() {
+    long arr[] = {36, 72, 144};
+    int count = sizeof(arr) / sizeof(arr[0]);
+    long result = max_div(arr, count);
+    printf("Maximum common divisor is: %ld\n", result);
+    return 0;
+}

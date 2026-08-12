@@ -1,8 +1,7 @@
 - 👋  Hello, I’m @zhanxdani
-- 🎯 I’m currently learning С/C++ and Haskell
-- 🎮 I’m interested in crypto, gamedev, overwatch :)
-- 🇨🇿 I'm student of BUT Faculty of Information Technology (https://clck.ru/reahB)
-- 🍀 I’m looking to collaborate on mobile development and blockchain technology
+- 🎯 I’m currently learning С/C++, Rust, R and JavaScript
+- 🎮 I’m interested in AI, finance apps, eco-projects, crypto and gamedev :)
+- 🇨🇿 I'm student of CZU - FZP, but studied at BUT Faculty of IT
 
 <!---
 zhanxdani/zhanxdani is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.

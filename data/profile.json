@@ -1,0 +1,31 @@
+{
+  "login": "zhanxdani",
+  "site": { "url": "https://tourricon.com/en", "label": "tourricon.com" },
+  "milestone": { "date": "2026-09-22", "label": "Tourricon: first commit" },
+  "hero": {
+    "name": "Zhantai Dan.",
+    "eyebrow": "FOUNDER OF TOURRICON",
+    "tagline": [
+      [["The ", false], ["shortest route", true], [" between", false]],
+      [["travellers and local guides.", false]]
+    ],
+    "alt": "Zhantai Dan., founder of Tourricon. The shortest route between travellers and local guides."
+  },
+  "buttons": [
+    { "id": "open", "label": "Open Tourricon", "primary": true },
+    { "id": "investors", "label": "Investor page" },
+    { "id": "deck", "label": "Request the deck" }
+  ],
+  "doors": [
+    { "id": "tours", "title": "Browse tours", "sub": "The live catalog" },
+    { "id": "guides", "title": "List a tour", "sub": "Free for local guides" },
+    { "id": "story", "title": "Story & roadmap", "sub": "Why we do this, what's next" },
+    { "id": "investors", "title": "For investors", "sub": "The two-minute brief" }
+  ],
+  "stats": [
+    { "id": "weeks", "value": "8", "unit": "weeks", "label": ["from first commit", "to a live marketplace"] },
+    { "id": "commits", "value": "549", "label": ["commits shipped", "to production"] },
+    { "id": "tests", "value": "220+", "label": ["end-to-end tests", "guarding every change"] },
+    { "id": "languages", "value": "3", "unit": "languages", "label": ["Russian, English", "and Kyrgyz"] }
+  ]
+}

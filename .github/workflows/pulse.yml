@@ -1,0 +1,39 @@
+name: Pulse
+
+# Redraws the "Shipping pulse" card on the profile from the contribution calendar.
+on:
+  schedule:
+    - cron: "17 4 * * *"   # every day, 04:17 UTC
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/**", "data/profile.json", "data/glyphs.json", ".github/workflows/pulse.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pulse
+  cancel-in-progress: true
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - name: Refresh the data and redraw the cards
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/build.py --live
+      - name: Commit what changed
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Nothing changed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets data/pulse.json
+          git commit -m "Redraw the pulse card"
+          git push

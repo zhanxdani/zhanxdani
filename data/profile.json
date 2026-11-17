@@ -4,28 +4,44 @@
   "milestone": { "date": "2026-09-22", "label": "Tourricon: first commit" },
   "hero": {
     "name": "Zhantai Dan.",
-    "eyebrow": "FOUNDER OF TOURRICON",
+    "eyebrow": "FOUNDER & AI PRODUCT ENGINEER",
     "tagline": [
-      [["The ", false], ["shortest route", true], [" between", false]],
-      [["travellers and local guides.", false]]
+      [["I turn ideas into ", false], ["live products", true], [" in weeks.", false]],
+      [["AI agents write the code. I own the result.", false]]
     ],
-    "alt": "Zhantai Dan., founder of Tourricon. The shortest route between travellers and local guides."
+    "alt": "Zhantai Dan., founder and AI product engineer. I turn ideas into live products in weeks. AI agents write the code; I own the result."
   },
   "buttons": [
     { "id": "open", "label": "Open Tourricon", "primary": true },
     { "id": "investors", "label": "Investor page" },
-    { "id": "deck", "label": "Request the deck" }
+    { "id": "contact", "label": "Get in touch" }
   ],
-  "doors": [
-    { "id": "tours", "title": "Browse tours", "sub": "The live catalog" },
-    { "id": "guides", "title": "List a tour", "sub": "Free for local guides" },
-    { "id": "story", "title": "Story & roadmap", "sub": "Why we do this, what's next" },
-    { "id": "investors", "title": "For investors", "sub": "The two-minute brief" }
+  "projects": [
+    { "id": "tourricon", "name": "Tourricon", "status": "live", "kind": "Marketplace", "link": "https://tourricon.com/en",
+      "desc": "Tour marketplace for Kyrgyzstan: travellers book local guides directly, with no agents in between." },
+    { "id": "fitfresh", "name": "Fit-Fresh", "status": "live", "kind": "Telegram Mini App", "link": "https://fit-fresh.vercel.app",
+      "desc": "Workouts, progress tracking, a smoothie menu and a PRO plan for a fitness coach." },
+    { "id": "jarvis", "name": "Mobile Jarvis", "status": "live", "kind": "Personal AI tool",
+      "desc": "Ideas and tasks I send from Telegram land with a Claude agent on my Mac." },
+    { "id": "jpass", "name": "jpass", "status": "live", "kind": "Agent security",
+      "desc": "AI agents sign in and store keys for me without ever seeing a password." },
+    { "id": "efirio", "name": "Efirio", "status": "idea", "kind": "Voice AI",
+      "desc": "A voice assistant for creators that sees through the camera and plans scripts." }
   ],
+  "pipeline": {
+    "title": "One founder, a team of AI agents.",
+    "stages": [
+      { "name": "Spec", "caption": "I decide what to build and write it down" },
+      { "name": "AI agents", "caption": "Claude Code writes most of the code", "key": true },
+      { "name": "Tests", "caption": "240+ end-to-end tests on a copy of the database" },
+      { "name": "Review", "caption": "I read every change before it ships" },
+      { "name": "Deploy", "caption": "Every push goes live automatically" }
+    ]
+  },
   "stats": [
     { "id": "weeks", "value": "8", "unit": "weeks", "label": ["from first commit", "to a live marketplace"] },
-    { "id": "commits", "value": "549", "label": ["commits shipped", "to production"] },
-    { "id": "tests", "value": "220+", "label": ["end-to-end tests", "guarding every change"] },
-    { "id": "languages", "value": "3", "unit": "languages", "label": ["Russian, English", "and Kyrgyz"] }
+    { "id": "commits", "value": "594", "label": ["commits shipped", "to production"] },
+    { "id": "tests", "value": "240+", "label": ["end-to-end tests", "guarding every change"] },
+    { "id": "ai", "value": "72%", "label": ["of commits written", "by AI agents"] }
   ]
 }

@@ -1,54 +1,70 @@
-<a href="https://tourricon.com/en"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg"><img src="assets/hero-light.svg" width="100%" alt="Zhantai Dan., founder of Tourricon. The shortest route between travellers and local guides."></picture></a>
+<a href="https://tourricon.com/en"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg"><img src="assets/hero-light.svg" width="100%" alt="Zhantai Dan., founder and AI product engineer. I turn ideas into live products in weeks. AI agents write the code; I own the result."></picture></a>
 
-I'm Zhantai. I founded **[Tourricon](https://tourricon.com/en)**, a marketplace where travellers book tours in Kyrgyzstan straight from local guides and small tour companies: no agents in between, every tour moderated, reviews only from people who actually went.
+I'm Zhantai, founder of **[Tourricon](https://tourricon.com/en)** and an AI product engineer. I turn ideas into live products in weeks: AI agents write the code, I own the product, the architecture and the result.
 
-I design it, build it and ship it. It is live, so the fastest way to judge it is to open it.
+<sub>Prague · Bishkek &nbsp;·&nbsp; English, Russian, Czech</sub>
 
 <p>
 <a href="https://tourricon.com/en"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-open-dark.svg"><img src="assets/btn-open-light.svg" height="46" alt="Open Tourricon"></picture></a>
 <a href="https://tourricon.com/en/investors"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-investors-dark.svg"><img src="assets/btn-investors-light.svg" height="46" alt="Investor page"></picture></a>
-<a href="mailto:connect@tourricon.com?subject=Tourricon%3A%20investor%20deck%20request"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-deck-dark.svg"><img src="assets/btn-deck-light.svg" height="46" alt="Request the deck"></picture></a>
+<a href="mailto:connect@tourricon.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-contact-dark.svg"><img src="assets/btn-contact-light.svg" height="46" alt="Get in touch"></picture></a>
 </p>
 
-## See it live
+## What I'm building
 
-Every card opens the working product.
+<a href="https://tourricon.com/en"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-tourricon-dark.svg"><img src="assets/project-tourricon-light.svg" width="100%" alt="Tourricon, live marketplace: tours in Kyrgyzstan booked directly with local guides, with no agents in between."></picture></a>
 
 <p>
-<a href="https://tourricon.com/en/tours"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/door-tours-dark.svg"><img src="assets/door-tours-light.svg" width="49%" alt="01. Browse tours: the live catalog"></picture></a>
-<a href="https://tourricon.com/en/for-organizers"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/door-guides-dark.svg"><img src="assets/door-guides-light.svg" width="49%" alt="02. List a tour: free for local guides"></picture></a>
-<a href="https://tourricon.com/en/about"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/door-story-dark.svg"><img src="assets/door-story-light.svg" width="49%" alt="03. Story and roadmap: why we do this, what's next"></picture></a>
-<a href="https://tourricon.com/en/investors"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/door-investors-dark.svg"><img src="assets/door-investors-light.svg" width="49%" alt="04. For investors: the two-minute brief"></picture></a>
+<a href="https://fit-fresh.vercel.app"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-fitfresh-dark.svg"><img src="assets/project-fitfresh-light.svg" width="49%" alt="Fit-Fresh, live Telegram Mini App: workouts, progress tracking, a smoothie menu and a PRO plan for a fitness coach."></picture></a>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-jarvis-dark.svg"><img src="assets/project-jarvis-light.svg" width="49%" alt="Mobile Jarvis, live personal AI tool: ideas and tasks sent from Telegram land with a Claude agent on my Mac."></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-jpass-dark.svg"><img src="assets/project-jpass-light.svg" width="49%" alt="jpass, live agent security tool: AI agents sign in and store keys without ever seeing a password."></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-efirio-dark.svg"><img src="assets/project-efirio-light.svg" width="49%" alt="Efirio, idea stage: a voice AI assistant for creators that sees through the camera and plans scripts."></picture>
 </p>
 
-## The build so far
+## How I build
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/pipeline-dark.svg"><img src="assets/pipeline-light.svg" width="100%" alt="How I build: one founder, a team of AI agents. 1 Spec: I decide what to build and write it down. 2 AI agents: Claude Code writes most of the code. 3 Tests: 240+ end-to-end tests on a copy of the database. 4 Review: I read every change before it ships. 5 Deploy: every push goes live automatically."></picture>
 
 <p>
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/stat-weeks-dark.svg"><img src="assets/stat-weeks-light.svg" width="49%" alt="8 weeks from first commit to a live marketplace"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stat-commits-dark.svg"><img src="assets/stat-commits-light.svg" width="49%" alt="549 commits shipped to production"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stat-tests-dark.svg"><img src="assets/stat-tests-light.svg" width="49%" alt="220+ end-to-end tests guarding every change"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stat-languages-dark.svg"><img src="assets/stat-languages-light.svg" width="49%" alt="3 languages: Russian, English and Kyrgyz"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stat-commits-dark.svg"><img src="assets/stat-commits-light.svg" width="49%" alt="594 commits shipped to production"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stat-tests-dark.svg"><img src="assets/stat-tests-light.svg" width="49%" alt="240+ end-to-end tests guarding every change"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stat-ai-dark.svg"><img src="assets/stat-ai-light.svg" width="49%" alt="72% of commits written by AI agents"></picture>
 </p>
 
-<sub>The Tourricon codebase in November 2026. The code is proprietary, so its repository is private; I am glad to walk through it on a call.</sub>
-
-## Shipping pulse
+<sub>Tourricon's codebase in November 2026. The code is private; I'm glad to walk through the architecture and the code on a call.</sub>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/pulse-dark.svg"><img src="assets/pulse-light.svg" width="100%" alt="Shipping pulse: my GitHub contributions per week over the last 26 weeks, redrawn every day."></picture>
 
-<sub>Live. A <a href=".github/workflows/pulse.yml">GitHub Action</a> redraws this chart every morning from my contribution calendar, private repositories included. The numbers behind it are in <a href="data/pulse.json">data/pulse.json</a>.</sub>
+<sub>Redrawn every morning by a <a href=".github/workflows/pulse.yml">GitHub Action</a> from my contribution calendar, private repositories included. Data: <a href="data/pulse.json">data/pulse.json</a>.</sub>
 
-## Pick your route
+**Toolbox.** TypeScript · React · Postgres · Supabase · Cloudflare · Telegram Mini Apps · Playwright · Claude Code
 
 <details>
-<summary><b>01 · I'm an investor</b> — the brief</summary>
+<summary><b>Engineering stories</b></summary>
+<br>
+
+- **Moved production in one morning.** Tourricon started on a no-code AI builder. I rehearsed the move on a copy of the data, then switched production to infrastructure I control, in one morning.
+- **A bug only iPhones could see.** The Telegram Mini App passed every Chromium test and still failed on iPhone: WebKit cancels a page navigation that starts while the app boots. Since the fix, every Mini App change is also checked in WebKit.
+- **Keys the AI never sees.** I built jpass so agents can sign in and store API keys for me without a password ever appearing in the chat, the logs or the terminal.
+
+</details>
+
+## Open to
+
+Investment in Tourricon · Co-founding AI ventures · Building AI products for companies
+
+Write to [connect@tourricon.com](mailto:connect@tourricon.com) or find me on X: [@zhantvi](https://x.com/zhantvi).
+
+<details>
+<summary><b>For investors: the brief</b></summary>
 <br>
 
 **The problem.** Travellers find tours in Kyrgyzstan through agents, random chats and Instagram: prices are opaque and reviews cannot be trusted. Local guides and small tour companies struggle to sell online and give up 20–30% to agents.
 
 **What Tourricon does.** A catalog of moderated tours. A request goes straight to the organizer, to their dashboard and to Telegram, and the traveller pays the organizer directly, with no platform commission. Only a traveller with a completed trip can leave a review.
 
-**What already works.** The catalog and moderation, requests with a Telegram bot, reviews and ratings, three languages, and dashboards for travellers, organizers, moderators and admins. It is a working product, not a slide deck.
+**What already works.** The catalog and moderation, requests with a Telegram bot, reviews and ratings, three languages (Russian, English, Kyrgyz), and dashboards for travellers, organizers, moderators and admins.
 
 **How it makes money.** Listing is free today, while supply and demand gather in one place. The revenue it is built towards: paid tour promotion, tools for organizers, and partner services for travellers such as eSIM, tickets and insurance.
 
@@ -58,55 +74,21 @@ Every card opens the working product.
 
 </details>
 
-<details>
-<summary><b>02 · I run tours</b> — list them for free</summary>
-<br>
+## Background
 
-Listing is free for the first organizers on Tourricon. A traveller picks a date and sends a request; it lands in your dashboard and in Telegram, and you confirm it with one tap. You are paid directly, and reviews come only from travellers who went with you.
+**Education.** Graduated from the Czech University of Life Sciences Prague. Studied information technology at Brno University of Technology. Organization management course at the Kyrgyz-Russian Slavic University, Bishkek.
 
-[List a tour](https://tourricon.com/en/for-organizers)
-
-</details>
+**Before that.** Graphic designer and web developer at an IT company in Bishkek, then freelance web and digital projects.
 
 <details>
-<summary><b>03 · I'm planning a trip</b> — find a guide</summary>
-<br>
-
-Hiking, horses, lakes, day trips out of Bishkek: tours across Issyk-Kul, Naryn, Chuy and beyond, in English, Russian and Kyrgyz. You deal with the guide, not with a middleman.
-
-[Browse the catalog](https://tourricon.com/en/tours)
-
-</details>
-
-<details>
-<summary><b>04 · I'm an engineer</b> — the stack and how I work</summary>
-<br>
-
-| Layer | What runs there |
-| --- | --- |
-| App | TanStack Start, React 19, TypeScript, Vite |
-| Interface | Tailwind CSS 4, shadcn/ui, Radix |
-| Data | Supabase: Postgres with row-level security and edge functions, Drizzle |
-| Messaging | A Telegram bot and Mini App, transactional email |
-| Quality | A Playwright end-to-end suite that runs against a local copy of the database |
-| Delivery | Cloudflare Workers; every push to `main` is built and deployed |
-
-I work AI-natively. Coding agents write most of the diffs; I own the product, the architecture and the review, and the end-to-end suite keeps every change honest. That is how one person ships at this pace.
-
-Also in the workshop: Fit-Fresh, a Telegram Mini App for a fitness coach (workouts, progress tracking, a PRO plan).
-
-</details>
-
-<details>
-<summary><b>Before Tourricon</b></summary>
+<summary><b>Earlier work on GitHub</b></summary>
 <br>
 
 - **2026.** Data work in Python: [raindetector-2.0](https://github.com/zhanxdani/raindetector-2.0), a rain-event pipeline that keeps running on fallback data when its weather source is down. A [small blockchain in Rust](https://github.com/zhanxdani/simple-rust-blockchain).
 - **2022.** Client websites in Bishkek: a [restaurant site with a cart, payments and search](https://github.com/zhanxdani/bahchai-backend-frontend), a [market site](https://github.com/zhanxdani/charlotteopt), an [agency site](https://github.com/zhanxdani/admiral), an [NFT marketplace front end](https://github.com/zhanxdani/nftforsky). iOS demos in Swift.
-- Student at CZU in Prague; before that, the Faculty of IT at BUT.
 
 </details>
 
 ---
 
-<sub>Write to <a href="mailto:connect@tourricon.com">connect@tourricon.com</a>. The cards on this page are drawn by <a href="scripts/build.py">scripts/build.py</a>; the typeface is Manrope, under the <a href="assets/OFL.txt">SIL Open Font License</a>.</sub>
+<sub>The cards on this page are drawn by <a href="scripts/build.py">scripts/build.py</a>; the typeface is Manrope, under the <a href="assets/OFL.txt">SIL Open Font License</a>.</sub>

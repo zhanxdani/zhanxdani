@@ -63,6 +63,7 @@ CSS = f"""
 @keyframes ping{{0%{{transform:scale(1);opacity:.55}}70%,100%{{transform:scale(2.6);opacity:0}}}}
 @keyframes twinkle{{0%,100%{{opacity:.25}}50%{{opacity:.95}}}}
 @keyframes nudge{{0%,60%,100%{{transform:none}}80%{{transform:translate(3px,-3px)}}}}
+@keyframes lit{{0%{{opacity:.55;transform:scale(1)}}35%,100%{{opacity:0;transform:scale(2.3)}}}}
 .up{{animation:up .9s {EASE} both}}
 .fade{{animation:fade 1.2s ease both}}
 .rise{{animation:rise 1.6s {EASE} both}}
@@ -71,6 +72,7 @@ CSS = f"""
 .ping{{transform-box:fill-box;transform-origin:center;animation:ping 2.4s ease-out infinite}}
 .twinkle{{animation:twinkle 3.6s ease-in-out infinite}}
 .nudge{{transform-box:fill-box;animation:nudge 3.2s ease-in-out infinite}}
+.lit{{transform-box:fill-box;transform-origin:center;opacity:0;animation:lit 6s ease-out infinite}}
 @media (prefers-reduced-motion:reduce){{*{{animation:none!important}}.motion{{display:none}}}}
 """.strip()
 
@@ -91,6 +93,23 @@ def measure(s: str, size: float, weight: int = 500, track: float = 0) -> float:
         if i + 1 < len(s):
             units += w["kern"].get(ch + s[i + 1], 0)
     return units * size / UPM + track * max(len(s) - 1, 0)
+
+
+def wrap(text: str, size: float, weight: int, width: float, max_lines: int = 0) -> list:
+    """Greedy line breaking by measured width."""
+    lines, cur = [], ""
+    for word in text.split():
+        trial = f"{cur} {word}".strip()
+        if cur and measure(trial, size, weight) > width:
+            lines.append(cur)
+            cur = word
+        else:
+            cur = trial
+    if cur:
+        lines.append(cur)
+    if max_lines and len(lines) > max_lines:
+        raise ValueError(f"{text!r} needs {len(lines)} lines at {size}px, the card has room for {max_lines}: shorten it")
+    return lines
 
 
 class Svg:
@@ -327,18 +346,90 @@ def button(theme: str, static: bool, label: str, primary: bool) -> str:
 TW, TH = 490, 232
 
 
-def door(theme: str, static: bool, index: int, item: dict) -> str:
-    """A link into the live product."""
-    svg = Svg(TW, TH, theme, f'{item["title"]}. {item["sub"]}', static)
+PILL = {"live": "LIVE", "building": "IN PROGRESS", "idea": "IDEA"}
+
+
+def pill(svg: Svg, x, y, status: str) -> float:
+    """A status pill whose top-left corner is (x, y). Returns its width."""
     t = svg.t
-    svg.frame(24)
-    topo(svg, TW - 64, 46, rings=6, r0=24, dr=20, seed=20 + index, delay=.1)
-    svg.text(32, 60, f"{index:02d}", 21, 800, t["teal"], track=2.2, attrs=svg.anim("up", 0))
-    nudge = "" if static else ' class="nudge"'
-    svg.add(f'<circle cx="{TW - 56}" cy="54" r="24" fill="{t["btn"]}"/>'
-            f'<g{nudge}>{arrow(TW - 63.5, 46.5, 15, t["on_btn"], 3)}</g>')
-    svg.text(32, 158, item["title"], 42, 800, t["ink"], attrs=svg.anim("up", .08))
-    svg.text(32, 196, item["sub"], 24, 500, t["ink2"], attrs=svg.anim("up", .16))
+    fg = {"live": t["teal"], "building": t["accent"], "idea": t["muted"]}[status]
+    bg = {"live": t["teal_soft"], "building": t["teal_soft"], "idea": t["hair"]}[status]
+    label = PILL[status]
+    w = 22 + 12 + measure(label, 15, 800, 1.6) + 14
+    svg.add(f'<rect x="{n(x)}" y="{n(y)}" width="{n(w)}" height="30" rx="15" fill="{bg}"/>'
+            f'<circle cx="{n(x + 17)}" cy="{n(y + 15)}" r="4.5" fill="{fg}"/>')
+    svg.text(x + 30, y + 20.5, label, 15, 800, fg, track=1.6)
+    return w
+
+
+def project(theme: str, static: bool, index: int, item: dict) -> str:
+    """A project card. The first project is drawn wide."""
+    featured = index == 1
+    W, H = (1000, 268) if featured else (TW, TH)
+    svg = Svg(W, H, theme, f'{item["name"]}, {PILL[item["status"]].lower()}. {item["desc"]}', static)
+    t = svg.t
+    svg.frame(28 if featured else 24)
+    topo(svg, W - (110 if featured else 64), 52, rings=7 if featured else 6, r0=26, dr=24 if featured else 20,
+         seed=60 + index, delay=.1)
+    x0 = 44 if featured else 32
+    svg.add(f'<g{svg.anim("up", 0)}>')
+    pw = pill(svg, x0, 36, item["status"])
+    svg.text(x0 + pw + 14, 57, item["kind"], 17, 600, t["muted"])
+    svg.add("</g>")
+    if item.get("link"):
+        r = 28 if featured else 24
+        cx, cy = W - (66 if featured else 56), 54 if not featured else 60
+        nudge = "" if static else ' class="nudge"'
+        a = 17 if featured else 15
+        svg.add(f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="{t["btn"]}"/>'
+                f'<g{nudge}>{arrow(cx - a / 2, cy - a / 2, a, t["on_btn"], 3)}</g>')
+    if featured:
+        svg.text(x0 - 3, 152, item["name"], 66, 800, t["ink"], attrs=svg.anim("up", .08))
+        for i, line in enumerate(wrap(item["desc"], 26, 500, 640, 2)):
+            svg.text(x0, 198 + i * 36, line, 26, 500, t["ink2"], attrs=svg.anim("up", .14 + i * .05))
+    else:
+        svg.text(x0 - 2, 136, item["name"], 40, 800, t["ink"], attrs=svg.anim("up", .08))
+        for i, line in enumerate(wrap(item["desc"], 21, 500, TW - 2 * x0, 2)):
+            svg.text(x0, 174 + i * 30, line, 21, 500, t["ink2"], attrs=svg.anim("up", .14 + i * .05))
+    return svg.render()
+
+
+# --------------------------------------------------------------------- pipeline
+
+def pipeline(theme: str, static: bool) -> str:
+    """How I build: five stages on one trail, with a waypoint walking it."""
+    p = PROFILE["pipeline"]
+    W, H = 1000, 384
+    svg = Svg(W, H, theme, p["title"] + " " + ". ".join(f'{s["name"]}: {s["caption"]}' for s in p["stages"]) + ".", static)
+    t = svg.t
+    svg.frame()
+    topo(svg, W - 90, 36, rings=6, r0=26, dr=22, seed=91, delay=.1)
+    svg.text(56, 70, "HOW I BUILD", 20, 800, t["teal"], track=3.2, attrs=svg.anim("up", 0))
+    svg.text(55, 120, p["title"], 34, 800, t["ink"], attrs=svg.anim("up", .06))
+
+    y, k = 194, len(p["stages"])
+    col = (W - 112) / k
+    xs = [56 + col * (i + .5) for i in range(k)]
+    svg.add(f'<path d="M{n(xs[0])} {y}H{n(xs[-1])}" stroke="{t["muted"]}" stroke-width="2.4" stroke-linecap="round" '
+            f'stroke-dasharray="1 9" opacity=".8"{svg.anim("fade", .2)}/>')
+    period, travel = 6.0, 4.8
+    if not static:
+        svg.add(f'<circle class="motion" r="7.5" fill="{t["accent"]}" stroke="{t["surface"]}" stroke-width="3">'
+                f'<animateMotion dur="{n(period)}s" repeatCount="indefinite" calcMode="linear" '
+                f'keyPoints="0;1;1" keyTimes="0;{n(travel / period)};1" path="M{n(xs[0])} {y}H{n(xs[-1])}"/></circle>')
+    for i, (x, st) in enumerate(zip(xs, p["stages"])):
+        if not static:
+            svg.add(f'<circle class="lit motion" style="animation-delay:{n(travel * i / (k - 1))}s" cx="{n(x)}" cy="{y}" '
+                    f'r="24" fill="{t["teal"]}"/>')
+        key = st.get("key")
+        svg.add(f'<g{svg.anim("up", .15 + i * .07)}>')
+        svg.add(f'<circle cx="{n(x)}" cy="{y}" r="24" fill="{t["btn"] if key else t["surface"]}" '
+                f'stroke="{t["teal"]}" stroke-width="2.5"/>')
+        svg.text(x, y + 6.5, str(i + 1), 19, 800, t["on_btn"] if key else t["teal"], anchor="middle")
+        svg.text(x, y + 72, st["name"], 25, 800, t["ink"], anchor="middle")
+        for j, line in enumerate(wrap(st["caption"], 18.5, 500, col - 12, 3)):
+            svg.text(x, y + 104 + j * 25, line, 18.5, 500, t["ink2"], anchor="middle")
+        svg.add("</g>")
     return svg.render()
 
 
@@ -530,8 +621,9 @@ def main() -> None:
         files[f"pulse-{theme}.svg"] = pulse(theme, a.static, data)
         for b in PROFILE["buttons"]:
             files[f'btn-{b["id"]}-{theme}.svg'] = button(theme, a.static, b["label"], b.get("primary", False))
-        for i, item in enumerate(PROFILE["doors"], 1):
-            files[f'door-{item["id"]}-{theme}.svg'] = door(theme, a.static, i, item)
+        files[f"pipeline-{theme}.svg"] = pipeline(theme, a.static)
+        for i, item in enumerate(PROFILE["projects"], 1):
+            files[f'project-{item["id"]}-{theme}.svg'] = project(theme, a.static, i, item)
         for i, item in enumerate(PROFILE["stats"], 1):
             files[f'stat-{item["id"]}-{theme}.svg'] = stat(theme, a.static, i, item)
     for name, content in files.items():
